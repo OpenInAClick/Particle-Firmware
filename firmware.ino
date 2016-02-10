@@ -9,7 +9,7 @@
 // led1 is D0, led2 is D7
 
 int led1 = D0;
-int led2 = D7;
+int lockPin = D1;
 
 // Last time, we only needed to declare pins in the setup function.
 // This time, we are also going to register our Spark function
@@ -19,7 +19,7 @@ void setup()
 
    // Here's the pin configuration, same as last time
    pinMode(led1, OUTPUT);
-   pinMode(led2, OUTPUT);
+   pinMode(lockPin, OUTPUT);
 
    // We are also going to declare a Spark.function so that we can turn the LED on and off from the cloud.
    Particle.function("toggleLock",toggleLock);
@@ -27,7 +27,7 @@ void setup()
 
    // For good measure, let's also make sure both LEDs are off when we start:
    digitalWrite(led1, LOW);
-   digitalWrite(led2, LOW);
+   digitalWrite(lockPin, LOW);
 
 }
 
@@ -40,11 +40,10 @@ void loop()
 int toggleLock(String delayStr) {
     int delay_ = delayStr.toInt();
     digitalWrite(led1,HIGH);
-    digitalWrite(led2,HIGH);
+    digitalWrite(lockPin,HIGH);
     
     delay(delay_ * 1000);
     
     digitalWrite(led1,LOW);
-    digitalWrite(led2,LOW);
+    digitalWrite(lockPin,LOW);
 }
-
