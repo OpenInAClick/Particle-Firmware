@@ -12,13 +12,13 @@ int led1 = D0;
 void setup()
 {
    // Here's the pin configuration, same as last time
-   pinMode(led1, OUTPUT);
+   // pinMode(led1, OUTPUT);
 
    // We are also going to declare a Spark.function so that we can turn the LED on and off from the cloud.
    Particle.function("toggleLock",toggleLock);
    
    // For good measure, let's also make sure both LEDs are off when we start:
-   digitalWrite(led1, LOW);
+   // digitalWrite(led1, LOW);
 
 }
 
